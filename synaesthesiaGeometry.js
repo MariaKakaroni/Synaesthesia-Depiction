@@ -1,7 +1,8 @@
 "use strict";
-//There are 32 functions that create well known shape-curves for easier svg use
-//Every shape-curve can be drawn threw its starting point and can be stroked with
-//Also every shape-curve will be appended to a svg node threw the parameter node
+// synaesthesiaGeometry is a javascipt library that was created to simplify the
+// creation and modification of 32 well-known shapes and curves with HTML5.
+// The shapes-curves are designed to be depicted on images in SVG format.
+// The synaesthesiaGeometry.js file contains the synaesthesiaGeometry object which represents the whole library.
 
 //Calculating one of the vertical sides of a right triangle threw pythagorean theorem
 //sideC is the hypotenese 
