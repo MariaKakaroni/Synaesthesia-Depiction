@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<title>synaesthesia</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="synaesthesia.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+
+<style>
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {width: 120px;background: #222;}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {margin-left: 120px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+</style>
+
+<body class="w3-black">
+
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-home w3-xxlarge"></i>
+    <p>MAIN</p>
+  </a>
+  <a href="#description" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="far fa-file-alt w3-xxlarge"></i>
+    <p>DESCRIPTION</p>
+  </a>
+  <a href="#shapes" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fas fa-shapes w3-xxlarge"></i>
+    <p>SHAPES</p>
+  </a>
+  <a href="#canvas" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="far fa-image w3-xxlarge"></i>
+    <p>CANVAS</p>
+  </a>  
+  <a href="#save" class="w3-bar-item w3-button w3-padding-large w3-hover-black" id="save-button1" download="synaesthesia.svg" onclick="buttons(this)">
+    <i class="far fa-save w3-xxlarge"></i>
+    <p>SAVE</p> 
+  </a>
+  <a href="#undo" class="w3-bar-item w3-button w3-padding-large w3-hover-black" id="undo-button1" onclick="buttons(this)">
+    <i class="fas fa-undo-alt w3-xxlarge"></i>
+    <p>UNDO</p>
+  </a>
+  <a href="#redo" class="w3-bar-item w3-button w3-padding-large w3-hover-black" id="redo-button1" onclick="buttons(this)">
+    <i class="fas fa-redo-alt w3-xxlarge"></i>
+    <p>REDO</p>
+  </a>
+  <!-- 
+  <a href="#patterns" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fas fa-chess-board w3-xxlarge"></i>
+    <p>PATTERNS</p>
+  </a>
+  -->
+</nav>
+
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">MAIN</a>
+    <a href="#description" class="w3-bar-item w3-button" style="width:25% !important">DESCRIPTION</a>
+    <a href="#canvas" class="w3-bar-item w3-button" style="width:25% !important">CANVAS</a>
+    <a href="#shapes" class="w3-bar-item w3-button" style="width:25% !important">SHAPES</a>
+    <a href="#canvas" class="w3-bar-item w3-button" style="width:25% !important">CANVAS</a>
+    <!--<a href="#patterns" class="w3-bar-item w3-button" style="width:25% !important">PATTERNS</a>-->
+    <a href="#save" class="w3-bar-item w3-button" id="save-button2" download="synaesthesia.svg" style="width:25% !important" onclick="buttons(this)">SAVE</a>
+    <a href="#undo" class="w3-bar-item w3-button" id="undo-button2" style="width:25% !important" onclick="buttons(this)">UNDO</a>
+    <a href="#redo" class="w3-bar-item w3-button" id="redo-button1" style="width:25% !important" onclick="buttons(this)">REDO</a>
+  </div>
+</div>
+
+<!-- Page Content -->
+<div class="w3-padding-large" id="main">
+  <!-- Header/Home -->
+  <header class="w3-padding-32 w3-center w3-black" id="home">
+    <h1 class="w3-jumbo"> Make your own synaesthesia depiction</h1>
+    <img src="rainbow.jpg" alt="rainbow" class="w3-image" style="width:100%" >
+  </header>
+
+  <!-- About Section -->
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="description">
+    <h2 class="w3-text-light-grey">Description</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <p class="w3-text-grey desc">The purpose of this application is to depict the experience that a synesthete has. 
+      You can choose differnet types of well known geometrical shapes-curves, patterns, colors, sizes and create a HQ SVG file that can be downloaded threw the save button.
+      The shapes-curves can be chosen by clicking on them on the SHAPES section (shapes table) of the page.
+      The shape will be drawn on the CANVAS and you can then move-resize-recolor-refill-rotate it as you wish.
+      You can add as many shapes as he/she wants.
+      There are undo/redo buttons for erasing/redraw the last shape that was drawn.
+      You can also create patterns on the SVG canvas. First you have to choose and modify (one at a time) every shape/curve that you want to exist on the canvas. 
+      Then you have to go on the patterns section and choose the number of the repetition that the pattern will have horizontally and vertically.
+      Press the button and the result will appear on the canvas.
+    </p>
+  </div>
+
+  <!-- shapes Section -->
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64 " id="shapes">
+    <h2 class="w3-text-light-grey">Choose shape</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <table id="shapeTable" style="width:100%">
+        <tr>
+          <th>Shape Name</th>
+          <th>Shape Picture</th> 
+        </tr>
+        <tr>
+          <td>Line</td>
+          <td id="tableLine" class="shapesClass">
+          </td>
+        </tr>
+        <tr>
+          <td>Circle</td>
+          <td id="tableCircle" class="shapesClass"> 
+          </td>
+        </tr>
+        <tr>
+          <td>Ellipse</td>
+          <td id="tableEllipse" class="shapesClass">
+          </td>
+        </tr>
+        <tr>
+          <td>Semi circle</td>
+          <td id="tableSemiCircle" class="shapesClass">
+          </td>
+        </tr>
+        <tr>
+          <td>Arc</td>
+          <td id="tableArc" class="shapesClass">
+          </td>
+        </tr>
+        <tr>
+          <td>Trapezoid</td>
+          <td id="tableTrapezoid" class="shapesClass">
+          </td>
+        </tr>
+        <tr>
+          <td>Parallelogram</td>
+          <td id="tableParallelogram" class="shapesClass">
+          </td>
+        </tr>
+        <tr>
+          <td>Rhombus</td>
+          <td id="tableRhombus" class="shapesClass">
+          </td>
+        </tr>
+        <tr>
+          <td>Triangle</td>
+          <td id="tableTriangle" class="shapesClass"> </td>
+        </tr>
+        <tr>
+          <td>Square</td>
+          <td id="tableSquare" class="shapesClass"></td>
+        </tr>
+        <tr>
+            <td>Rectangle</td>
+            <td id="tableRecatngle" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Right Triangle</td>
+            <td id="tableRightTriangle" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Isosceles Triangle</td>
+            <td id="tableIsoscelesTriangle" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Equilateral Triangle</td>
+            <td id="tableEquilateralTriangle" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Sine</td>
+            <td id="tableSine" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Cosine</td>
+            <td id="tableCosine" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Tangent</td>
+            <td id="tableTangent" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Cotangent</td>
+            <td id="tableCotangent" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Parabola</td>
+            <td id="tableParabola" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Hyperbola</td>
+            <td id="tableHyperbola" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Figure Eight Curve</td>
+            <td id="tableFigureEightCurve" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Lemniscate Of Bernoulli</td>
+            <td id="tableLemniscateOfBernoulli" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Astroid Curve</td>
+            <td id="tableAstroidCurve" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Witch Of Agnesi Curve</td>
+            <td id="tableWitchOfAgnesiCurve" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Archimedean Spiral</td>
+            <td id="tableArchimedeanSpiral" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Limacon Of Pascal</td>
+            <td id="tableLimaconOfPascal" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Deltoid Curve</td>
+            <td id="tableDeltoidCurve" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Strophoid Curve</td>
+            <td id="tableStrophoidCurve" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Cycloid Curve</td>
+            <td id="tableCycloidCurve" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Rhodonea Curve</td>
+            <td id="tableRhodoneaCurve" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Fermat's Spiral</td>
+            <td id="tableFermatsSpiral" class="shapesClass"></td>
+          </tr>
+          <tr>
+            <td>Lituus</td>
+            <td id="tableLituus" class="shapesClass"></td>
+          </tr>
+      </table>
+  </div>
+
+  <!-- canvas Section -->
+  <div class="w3-padding-64 w3-content  w3-text-grey " id="canvas">
+    <h2 class="w3-text-light-grey">Your canvas</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <div id="canvas-options">
+      <form action=""> 
+        <fieldset>
+          <legend> Canvas options: </legend>
+          <label for="canvasColor"> Choose color: </label>
+          <input type="color" id="canvasColor" value="#502121" oninput="canvasOptions(this)"><br>
+          <h4>Select canvas orientation:</h4>
+          <input type="radio" id="hor" class="orientation" name="orientation" value="horizontal" onclick="canvasOptions(this)" checked>
+          <label for="hor">Horizontal</label>
+          <input type="radio" id="ver" class="orientation" name="orientation" value="vertical" onclick="canvasOptions(this)">
+          <label for="ver">Vertical</label>
+          <input type="radio" id="sq" class="orientation" name="orientation" value="square" onclick="canvasOptions(this)">
+          <label for="sq">Square</label>
+        </fieldset>
+      </form>
+    </div> <br>
+
+    <div id="svg-target">
+      <svg id="workspace" viewBox="0 0 200 100" style="background-color: #502121">
+      </svg>
+    </div><br>
+
+    <form action=""> 
+      <fieldset>
+        <legend> Shape options: </legend>
+        <div id="color-options" class="options">
+        <label for="shapeColor"> Draw the shape with this color: </label>
+        <input type="color" id="shapeColor" value="#cccccc" oninput="shapeOptions(this)"><br>
+        <label for="strokeThickness"> Select the thickness of the drawing line: </label>
+        <input type="range" id="strokeThickness" class="slider" min="1" max="11" step="1" value="1" oninput="shapeOptions(this)"/><br>
+        <label for="strokeOpacity"> Select the opacity of the drawing line: </label>
+        <input type="range" id="strokeOpacity" class="slider" min="0" max="1" step="0.1" value="1" oninput="shapeOptions(this)"/><br>
+        <label for="fillColor"> Fill the shape with this color: </label>
+        <input type="color" id="fillColor" value="#502121" oninput="shapeOptions(this)"><br>
+        <label for="fillOpacity"> Select the opacity of the shape: </label>
+        <input type="range" id="fillOpacity" class="slider" min="0" max="1" step="0.1" value="1" oninput="shapeOptions(this)"/><br>
+        <div id="sliders" class="options">
+          <label for="horizontalSlider"> Move shape horizontally: </label>
+          <input type="range" id="horizontalSlider" class="slider" min="-200" max="200" step="1" value="0" oninput="moveSlider(this)"/><br>
+          <label for="horizontalSlider">  Move shape vertically: </label>
+          <input type="range" id="verticalSlider" class="slider" min="-100" max="100" step="1" value="0" oninput="moveSlider(this)"/><br>
+          <label for="rotarion">  Rotate the shape(in degrees): </label>
+          <input type="range" id="rotation" class="slider" min="0" max="360" value="0" oninput="moveSlider(this)"/><br>
+          <label for="rotarion">  Size of the shape: </label>
+          <input type="range" id="scale" class="slider" min="0" max="3" step="0.1" value="1" oninput="moveSlider(this)"/><br>
+        </div>
+      </fieldset>
+    </form>
+
+  </div>
+
+  <!-- Patterns Section -->
+  <!--
+  <div class="w3-padding-64 w3-content w3-text-grey" id="patterns">
+    <h2 class="w3-text-light-grey">Create your patterns</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <div id="canvas-options">
+      <form action=""> 
+        <fieldset>
+          <label for="horizontalTiles">Number of pattern tiles horizontically (1-10):</label>
+          <input type="number" id="horizontalTiles" name="horizontalTiles" min="1" max="10" value="1"><br>
+          <label for="verticalTiles">Number of pattern tiles vertically (1-10):</label>
+          <input type="number" id="verticalTiles" name="verticalTiles" min="1" max="10" value="1"><br>
+          <button type="button" onclick="createPattern()">Create pattern</button>
+        </fieldset>
+      </form>
+    </div> <br>
+  </div>
+  -->
+    <!-- Footer -->
+  <footer class="w3-center">
+    <i class="fa fa-copyright w3-text-grey w3-medium w3-hover-opacity"> 2021 Kakaroni Maria. All rights reserved.</i>
+  </footer>
+
+<!-- END PAGE CONTENT -->
+</div>
+  <script src="synaesthesiaGeometry.js"></script>
+  <script src="synaesthesia.js"></script>
+  <script src="https://kit.fontawesome.com/08cbc9f3d6.js"></script>
+</body>
+</html>
